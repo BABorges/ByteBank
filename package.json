@@ -13,6 +13,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "cypress": "cypress open",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test:coverage": "npm run test -- --coverage --watchAll=false",
@@ -53,9 +54,11 @@
     ]
   },
   "devDependencies": {
+    "@faker-js/faker": "^8.4.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "cypress": "^13.8.1",
     "eslint": "^8.26.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
