@@ -66,13 +66,13 @@ describe('Valida funcionalidades do login', () => {
   it('Valida campos obrigatórios', () => {
     cy.get('[data-test="botao-cadastro"]')
       .click()
-    
+
     cy.get('[data-test="botao-enviar"]')
       .click()
     cy.get('[data-test="mensagem-erro"]')
       .should('be.visible')
       .should('have.text', 'O campo de senha é obrigatório')
-    
+
     cy.get('[data-test="senha-input"]')
       .type('123')
     cy.get('[data-test="botao-enviar"]')
@@ -80,7 +80,7 @@ describe('Valida funcionalidades do login', () => {
     cy.get('[data-test="mensagem-erro"]')
       .should('be.visible')
       .should('have.text', 'O campo email é obrigatório')
-    
+
     cy.get('[data-test="email-input"]')
       .type('teste@teste.com')
     cy.get('[data-test="botao-enviar"]')
@@ -88,7 +88,7 @@ describe('Valida funcionalidades do login', () => {
     cy.get('[data-test="mensagem-erro"]')
       .should('be.visible')
       .should('have.text', 'O campo de nome é obrigatório')
-    
+
     cy.get('[data-test="nome-input"]')
       .type('Teste Cypress')
     cy.get('[data-test="checkbox-input"]')
@@ -103,7 +103,7 @@ describe('Valida funcionalidades do login', () => {
   it('Valida criação de nova conta', () => {
     cy.NovaConta()
   })
-  
+
   it('Valida layout da tela de login', () => {
     cy.get('[data-test="botao-login"]')
       .click()
@@ -162,4 +162,13 @@ describe('Valida funcionalidades do login', () => {
       .should('have.text', 'Olá, ' + Cypress.env('nome'))
   })
 
-})
+  it.only('Valida login do usuário no sistema via API', () => {
+    cy.NovaContaAPI()
+    cy.LoginAPI()
+    cy.visit('/home')
+
+    cy.get('h1')
+        .should('be.visible')
+        .should('have.text', 'Bem vindo de volta!')
+    })
+  })

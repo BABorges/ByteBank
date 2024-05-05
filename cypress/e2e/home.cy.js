@@ -2,12 +2,19 @@
 
 describe('Valida funcionalidades da Home', () => {
 
-    it.only('Valida tela do Home', () => {
-        cy.NovaContaAPI()
-        cy.LoginAPI()
-
+    beforeEach(() => {
+        cy.request({
+            method: 'POST',
+            url: 'http://localhost:8000/public/login',
+            body: {
+                email: 'cypress@teste.com',
+                senha: '123'
+            }
+        })
         cy.visit('/home')
+    })
 
+    it('Valida tela do Home', () => {
         cy.get('#root > div > main > nav')
             .children().should('have.length', 4)
             .should('be.visible')
@@ -66,7 +73,6 @@ describe('Valida funcionalidades da Home', () => {
                         .then(($valor) => {
                             let textoValor = $valor.text();
                             let matchValor = textoValor.match(/\d+.\d+/);
-                            console.log(matchValor)
                             let valor = parseFloat(matchValor[0])
                             let valorFormatado = valor.toFixed(2)
                             Cypress.env("valorTransacaoFront", valorFormatado);
@@ -89,15 +95,47 @@ describe('Valida funcionalidades da Home', () => {
                         expect(Cypress.env('mesTransacaoAPI')).to.equal(Cypress.env('mesTransacaoFront'))
                         expect(Cypress.env('tipoTransacaoAPI')).to.equal(Cypress.env('tipoTransacaoFront'))
                         expect(Cypress.env('valorTransacaoAPI')).to.eq(Cypress.env('valorTransacaoFront'))
-
-                        console.log(Cypress.env('valorTransacaoAPI'))
-                        console.log(Cypress.env('valorTransacaoFront'))
                     })
                 })
             }
+        })
 
+        cy.get('h1')
+            .should('have.text', 'Bem vindo de volta!')
 
+        function obterDataAtual() {
+            let dataAtual = new Date();
+            let diasDaSemana = ["Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"];
+            let diaDaSemana = diasDaSemana[dataAtual.getDay()];
+            let dia = String(dataAtual.getDate()).padStart(2, '0');
+            let mes = String(dataAtual.getMonth() + 1).padStart(2, '0');
+            let ano = dataAtual.getFullYear();
+            let dataFormatada = `${dia}/${mes}/${ano}`;
+            return `${diaDaSemana}, ${dataFormatada}`;
+        }
+        cy.get('[data-testid="data-atual"]')
+            .should('be.visible')
+            .invoke('text')
+            .then((texto) => {
+                expect(texto.trim()).to.equal(obterDataAtual());
+            });
+        cy.request({
+            method: 'GET',
+            url: 'http://localhost:8000/saldo'
+        }).then((response) => {
+            let saldoAPI = response.body.valor
+            cy.wait(1000)
+            cy.get('[data-testid="saldo"]')
+                .should('be.visible')
+                .invoke('text')
+                .then((saldo) => {
+                    let saldoFront = parseInt(saldo.match(/\d+/)[0]);
+                    expect(saldoFront).to.equal(saldoAPI)
+                })
         })
     })
-})
 
+    it('novo', () => {
+        
+    })
+})
