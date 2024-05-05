@@ -39,7 +39,16 @@ Cypress.Commands.add('NovaContaAPI', () => {
             email: Cypress.env('email'),
             senha: Cypress.env('senha')
         }
-    }).then((xhr) => {
-        expect()
+    })
+})
+
+Cypress.Commands.add('LoginAPI', () => {
+    cy.request({
+        method: 'POST',
+        url: 'http://localhost:8000/public/login',
+        body: {
+            email: Cypress.env('email'),
+            senha: Cypress.env('senha')
+        }
     })
 })

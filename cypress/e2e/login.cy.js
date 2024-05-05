@@ -23,8 +23,10 @@ describe('Valida funcionalidades do login', () => {
   it('Valida layout da tela de abertura de conta', () => {
     cy.get('[data-test="botao-cadastro"]')
       .click()
+
     cy.get('#root > div > header > div > div > div.ModalCadastroUsuario_janela__modal__vjP8I > div > img')
       .should('be.visible')
+
     cy.get('[for="nome"]')
       .should('be.visible')
       .should('have.text', 'Nome')
@@ -32,6 +34,7 @@ describe('Valida funcionalidades do login', () => {
       .should('be.visible')
       .should('be.empty')
       .should('have.attr', 'placeholder', 'Digite seu nome completo')
+
     cy.get('[for="email"]')
       .should('be.visible')
       .should('have.text', 'E-mail')
@@ -39,6 +42,7 @@ describe('Valida funcionalidades do login', () => {
       .should('be.visible')
       .should('be.empty')
       .should('have.attr', 'placeholder', 'Digite seu email')
+
     cy.get('[for="senha"]')
       .should('be.visible')
       .should('have.text', 'Senha')
@@ -46,12 +50,14 @@ describe('Valida funcionalidades do login', () => {
       .should('be.visible')
       .should('be.empty')
       .should('have.attr', 'placeholder', 'Digite sua senha')
+
     cy.get('[data-test="checkbox-input"]')
       .should('be.visible')
       .should('not.be.checked')
     cy.get('#root > div > header > div > div > div.ModalCadastroUsuario_janela__modal__vjP8I > div > form > div > p')
       .should('be.visible')
       .should('have.text', 'Li e estou ciente quanto às condições de tratamento dos meus dados conforme descrito na Política de Privacidade do banco.')
+
     cy.get('[data-test="botao-enviar"]')
       .should('be.visible')
       .should('have.text', 'Criar conta')
@@ -60,11 +66,13 @@ describe('Valida funcionalidades do login', () => {
   it('Valida campos obrigatórios', () => {
     cy.get('[data-test="botao-cadastro"]')
       .click()
+    
     cy.get('[data-test="botao-enviar"]')
       .click()
     cy.get('[data-test="mensagem-erro"]')
       .should('be.visible')
       .should('have.text', 'O campo de senha é obrigatório')
+    
     cy.get('[data-test="senha-input"]')
       .type('123')
     cy.get('[data-test="botao-enviar"]')
@@ -72,6 +80,7 @@ describe('Valida funcionalidades do login', () => {
     cy.get('[data-test="mensagem-erro"]')
       .should('be.visible')
       .should('have.text', 'O campo email é obrigatório')
+    
     cy.get('[data-test="email-input"]')
       .type('teste@teste.com')
     cy.get('[data-test="botao-enviar"]')
@@ -79,6 +88,7 @@ describe('Valida funcionalidades do login', () => {
     cy.get('[data-test="mensagem-erro"]')
       .should('be.visible')
       .should('have.text', 'O campo de nome é obrigatório')
+    
     cy.get('[data-test="nome-input"]')
       .type('Teste Cypress')
     cy.get('[data-test="checkbox-input"]')
@@ -92,11 +102,9 @@ describe('Valida funcionalidades do login', () => {
 
   it('Valida criação de nova conta', () => {
     cy.NovaConta()
-    Cypress.env('nome')
-    Cypress.env('email')
-    Cypress.env('senha')
   })
-  it.only('Valida layout da tela de login', () => {
+  
+  it('Valida layout da tela de login', () => {
     cy.get('[data-test="botao-login"]')
       .click()
     cy.get('#root > div > header > div > div > div.ModalLoginUsuario_janela__modal__Pq4Q7 > div > img')
