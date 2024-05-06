@@ -1,5 +1,7 @@
 /// <reference types="cypress"/>
 
+import { faker } from '@faker-js/faker'
+
 describe('Valida funcionalidades da Home', () => {
 
     beforeEach(() => {
@@ -133,9 +135,98 @@ describe('Valida funcionalidades da Home', () => {
                     expect(saldoFront).to.equal(saldoAPI)
                 })
         })
+
+        cy.get('form > div:nth-child(1) > h3')
+            .should('be.visible')
+            .should('have.text', 'Nova Transação')
+        cy.get('[data-test="select-opcoes"]')
+            .should('be.visible')
+            .should('be.enabled')
+            .should('have.value', 'Selecione um tipo de transação')
+            .children('option')
+            .each(($option) => {
+                let opcao = $option.text().trim()
+                expect(opcao).to.satisfy((texto) => {
+                    return texto === 'Selecione um tipo de transação' ||
+                        texto === 'Depósito' ||
+                        texto === 'Transferência';
+                });
+            })
+        cy.get('form > div > label')
+            .should('be.visible')
+            .should('have.text', 'Valor')
+        cy.get('[data-test="form-input"]')
+            .should('be.visible')
+            .should('be.empty')
+            .should('have.attr', 'placeholder', 'Digite um valor')
+        cy.get('[data-test="realiza-transacao"]')
+            .should('be.visible')
+            .should('be.enabled')
+
     })
 
-    it('novo', () => {
-        
+    it.only('Valida nova transação realizada', () => {
+        let transacoes = ['Depósito', 'Transferência'];
+
+        function executarTransacoes() {
+            transacoes.forEach(transacao => {
+                cy.get('[data-test="select-opcoes"]')
+                    .select(transacao);
+                    
+                let valor
+                if (transacao === 'Depósito') {
+                    valor = faker.number.float({ min: 1, max: 9999 }).toFixed(2);
+                } else {
+                    valor = faker.number.float({ min: 1, max: 999 }).toFixed(2);
+                }
+
+                cy.get('[data-test="form-input"]')
+                    .type(valor);
+                cy.get('[data-test="realiza-transacao"]')
+                    .click();
+                cy.get('[data-test="form-input"]')
+                    .should('be.empty');
+
+                const mesesPorExtenso = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+                const dataAtual = new Date();
+                const mesAtual = mesesPorExtenso[dataAtual.getMonth()];
+                let dia = String(dataAtual.getDate()).padStart(2, '0');
+                let mes = String(dataAtual.getMonth() + 1).padStart(2, '0');
+                let ano = dataAtual.getFullYear();
+                let dataFormatada = `${dia}/${mes}/${ano}`;
+
+                cy.request({
+                    method: 'GET',
+                    url: 'http://localhost:8000/transacoes',
+                }).then((response) => {
+                    const ultimoItem = response.body[response.body.length - 1];
+                    let dataTransacaoAPI = ultimoItem.data;
+                    let mesTransacaoAPI = ultimoItem.mes;
+                    let tipoTransacaoAPI = ultimoItem.transacao;
+                    let valorTransacaoAPI = ultimoItem.valor;
+                    expect(valorTransacaoAPI).to.eq(valor);
+                    expect(dataTransacaoAPI).to.eq(dataFormatada);
+                    expect(tipoTransacaoAPI).to.eq(transacao);
+                    expect(mesTransacaoAPI).to.eq(mesAtual);
+
+                    console.log(valor);
+                    console.log(transacao);
+                });
+            });
+        }
+        executarTransacoes()
+    })
+
+    it('teste', () => {
+
+        let transf = 'Transferência'
+        cy.get('[data-test="select-opcoes"]')
+            .select(transf)
+
+        let valor = faker.number.float({ min: 1, max: 999 }).toFixed(2)
+        cy.get('[data-test="form-input"]')
+            .type(valor)
+        console.log(valor)
+
     })
 })
