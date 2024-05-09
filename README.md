@@ -1,70 +1,57 @@
-# Getting Started with Create React App
+# PASSO A PASSO DE EXECUÇÃO 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Projeto `ByteBank` para apresentação da discuplica Técnicas de verificação, Validação e Testes de Software do professor Guylerme Velasco.
 
-## Available Scripts
+Consta neste repositório o front, API e testes utilizando o Cypress.
 
-In the project directory, you can run:
+## Subindo a API
+
+Para subir a API do projeto, deve-se abrir um novo terminal:
+
+### `ctrl + shift + '`
+
+Na sequência deve-se executar o seguinte comando:
+
+### `./run.bat`
+
+Este comando executa a bat que irá acessar a pasta /api-bytebank e executar o comando **npm run start-api**
+
+## Subindo o Front
+
+Para subir o front do projeto, deve-se abrir um novo terminal:
+
+### `ctrl + shift + '`
+
+Na sequência deve-se executar o seguinte comando:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Executando o Cypress
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Ao utilizar o Cypress você pode executar os testes de 2 formas, em Tempo Real, onde você visualiza na tela o teste sendo executados ou em modo Headless, onde você não vizualiza o teste acontecendo e sendo mais rápida sua execução.
 
-### `npm test`
+### 1. Tempo Real
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Para escolher qual teste do projeto deseja visualizar sua execução, deve-se abrir um novo terminal:
 
-### `npm run build`
+### `ctrl + shift + '`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Na sequência deve-se executar o seguinte comando:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### `npm run cypress`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Será aberta a tema do Cypess para você escolher o navegador e em seguida o teste a ser executado.
 
-### `npm run eject`
+### 2. Modo Headless
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Para escolher qual teste do projeto deseja visualizar sua execução, deve-se abrir um novo terminal:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### `ctrl + shift + '`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Neste modo você poderá executar todos os testes existentes executando o seguinte comando:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### `npx cypress run`
 
-## Learn More
+Ou executar um teste em específico executando o seguinte comando por exemplo:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### `npx cypress run --spec cypress/e2e/login.cy.js`

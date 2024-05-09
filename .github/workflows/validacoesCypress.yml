@@ -1,0 +1,27 @@
+name: Pepeline de testes usando o Cypress
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  test:
+    name: Pepiline de testes usando o Cypress
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v3
+      - name: Configurar o Node JS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14.x 
+      - name: Instalar as dependências
+        run: npm install
+      - name: Subir a API
+        run: npm run start-api ../api-bytebank
+      - name: Subir o Front
+        run: npm start
+      - name: Executar os testes Cypress
+        run: npx cypress run
