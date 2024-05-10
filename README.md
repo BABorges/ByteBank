@@ -56,4 +56,4 @@ Ou executar um teste em específico executando o seguinte comando por exemplo:
 
 ### `npx cypress run --spec cypress/e2e/login.cy.js`
 
-# FIM
+# FIM!
