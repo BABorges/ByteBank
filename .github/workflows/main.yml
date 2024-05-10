@@ -50,7 +50,7 @@ jobs:
             needs: wait-30-seconds
             steps:
               - name: Esperar 20 segundos antes de começar
-                run: sleep 20s
+                run: sleep 30s
               - name: Checkout do código
                 uses: actions/checkout@v2
               - name: Executar os testes Cypress
