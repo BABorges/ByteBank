@@ -1,4 +1,4 @@
-name: Pepeline de testes usando o Cypress
+name: Pepeline de testes usando o Cypress//
 
 on:
   push:
@@ -38,19 +38,19 @@ jobs:
           npm install
           npm run start-front
 
-  wait-10-seconds:
-            name: Aguardar 10 segundos
+  wait-20-seconds:
+            name: Aguardar 20 segundos
             runs-on: ubuntu-latest
             steps:
-              - name: Esperar 10 segundos
-                run: sleep 10s
+              - name: Esperar 20 segundos
+                run: sleep 20s
   test:
             name: Executar os testes Cypress
             runs-on: ubuntu-latest
-            needs: wait-10-seconds
+            needs: wait-20-seconds
             steps:
-              - name: Esperar 10 segundos antes de começar
-                run: sleep 10s
+              - name: Esperar 20 segundos antes de começar
+                run: sleep 20s
               - name: Checkout do código
                 uses: actions/checkout@v2
               - name: Executar os testes Cypress
