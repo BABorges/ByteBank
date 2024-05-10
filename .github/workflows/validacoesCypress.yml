@@ -26,6 +26,7 @@ jobs:
           node-version: 14.x 
       - name: Instalar as dependências
         run: npm install
+             npm install json-server
       - name: Inicializar e atualizar submódulos
         run: git submodule update --init --recursive
       - name: Instalar dependências e executar
