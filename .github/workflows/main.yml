@@ -38,16 +38,16 @@ jobs:
           npm install
           npm run start-front
 
-  wait-20-seconds:
-            name: Aguardar 20 segundos
+  wait-30-seconds:
+            name: Aguardar 30 segundos
             runs-on: ubuntu-latest
             steps:
-              - name: Esperar 20 segundos
-                run: sleep 20s
+              - name: Esperar 30 segundos
+                run: sleep 30s
   test:
             name: Executar os testes Cypress
             runs-on: ubuntu-latest
-            needs: wait-20-seconds
+            needs: wait-30-seconds
             steps:
               - name: Esperar 20 segundos antes de começar
                 run: sleep 20s
@@ -56,4 +56,4 @@ jobs:
               - name: Executar os testes Cypress
                 run: |
                   npm install cypress
-                  npx cypress run
+                  npx cypress run --url=http://localhost:3000 --api_url=http://localhost:8000
