@@ -20,7 +20,7 @@ jobs:
       - name: Instalar as dependências
         run: npm install
       - name: Subir a API
-        run: npm run start-api
+        run: npm run node ./api-bytebank/server.js`
       - name: Subir o Front
         run: npm start
       - name: Executar os testes Cypress
