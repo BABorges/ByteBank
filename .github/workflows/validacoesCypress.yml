@@ -29,8 +29,9 @@ jobs:
       - name: Inicializar e atualizar submódulos
         run: git submodule update --init --recursive
       - name: Instalar dependências e executar
-        run: npm install json-server
-             npm run start-api
+        run: npm install json-
+             npx json-server --watch ./api-bytebank/db.json
+             #npm run start-api
       - name: Subir o Front
         run: npm start
       - name: Executar os testes Cypress
