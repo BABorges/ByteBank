@@ -6,38 +6,25 @@ on:
       - main
 
 jobs:
-  update-api:
-    name: Atualizar API
+  update:
+    name: Atualizar API e Front
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        job-type: ['api', 'front']
     steps:
-      - name: Checkout da API
+      - name: Checkout do código
         uses: actions/checkout@v2
-        with:
-          repository: BABorges/api-ByteBank
-          ref: main
-          path: api-ByteBank
-      - name: Instalar dependências e iniciar API
-        working-directory: api-ByteBank
+      - name: Instalar dependências e iniciar
         run: |
-          npm install
-          npm run start-api
-
-  update-front:
-    name: Atualizar Front
-    runs-on: ubuntu-latest
-    needs: update-api
-    steps:
-      - name: Checkout do Front
-        uses: actions/checkout@v2
-        with:
-          repository: BABorges/ByteBank
-          ref: main
-          path: ByteBank
-      - name: Instalar dependências e iniciar Front
-        working-directory: ByteBank
-        run: |
-          npm install
-          npm run start-front
-
+          if [ ${{ matrix.job-type }} == 'api' ]; then
+            cd api-ByteBank
+            npm install
+            npm run start-api
+          else
+            cd ByteBank
+            npm install
+            npm run start-front
+          fi
       - name: Executar os testes Cypress
         run: npx cypress run
