@@ -56,4 +56,4 @@ jobs:
               - name: Executar os testes Cypress
                 run: |
                   npm install cypress
-                  npx cypress run --url=http://localhost:3000 --api_url=http://localhost:8000
+                  npx cypress run --headless 
