@@ -18,11 +18,9 @@ jobs:
       - name: Instalar dependências e iniciar
         run: |
           if [ ${{ matrix.job-type }} == 'api' ]; then
-            cd api-ByteBank
             npm install
             npm run start-api
           else
-            cd ByteBank
             npm install
             npm run start-front
           fi
