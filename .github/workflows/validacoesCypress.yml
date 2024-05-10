@@ -31,8 +31,8 @@ jobs:
       - name: Instalar json-server
         run: npm install json-server
 
-#- name: Iniciar json-server
- #       run: npx json-server --watch ./api-bytebank/db.json
+      - name: Iniciar json-server
+        run: npx json-server --watch ./api-bytebank/db.json
 
       - name: Iniciar a aplicação
         run: npm run start-api
