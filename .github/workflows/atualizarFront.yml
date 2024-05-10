@@ -1,0 +1,21 @@
+name: Atualizar Frontend
+on:
+  push:
+    branches:
+      - main
+jobs:
+  update-front:
+    name: Atualizar Frontend
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do Frontend
+        uses: actions/checkout@v2
+        with:
+          repository: BABorges/ByteBank
+          ref: main
+          path: ByteBank
+      - name: Instalar dependências e iniciar Frontend
+        working-directory: ByteBank
+        run: |
+          npm install
+          npm run start-front

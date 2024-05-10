@@ -1,0 +1,19 @@
+name: Pepeline de testes usando o Cypress
+on:
+  push:
+    branches:
+      - main
+jobs:
+  update-api:
+    uses: ./.github/workflows/atualizarAPI.yml
+  update-front:
+    uses: ./.github/workflows/atualizar Front.yml
+  test:
+    name: Executar os testes Cypress
+    runs-on: ubuntu-latest
+    needs: [update-api, update-front]
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v2
+      - name: Executar os testes Cypress
+        run: npx cypress run
