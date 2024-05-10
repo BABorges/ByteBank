@@ -55,3 +55,5 @@ Neste modo você poderá executar todos os testes existentes executando o seguin
 Ou executar um teste em específico executando o seguinte comando por exemplo:
 
 ### `npx cypress run --spec cypress/e2e/login.cy.js`
+
+# FIM
