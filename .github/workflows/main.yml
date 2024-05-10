@@ -49,4 +49,4 @@ jobs:
               - name: Executar os testes Cypress
                 run: |
                   npm install
-                  npx cypress run --headless 
+                  npx cypress run@13.8.1 
