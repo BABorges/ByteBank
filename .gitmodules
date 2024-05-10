@@ -1,4 +1,3 @@
 [submodule "api-bytebank"]
 	path = api-bytebank
-	url = https://github.com/BABorges/api-ByteBank.git
-	headers = Authorization: Basic QkFCb3JnZXM6QVBJQllURUJBTktUT0tFTg==
+	url = BABorges:APIBYTEBANKTOKEN@github.com/BABorges/api-ByteBank.git
