@@ -25,7 +25,6 @@ jobs:
   update-front:
     name: Atualizar Front
     runs-on: ubuntu-latest
-    needs: update-api
     steps:
       - name: Checkout do Front
         uses: actions/checkout@v2
@@ -42,9 +41,10 @@ jobs:
   test:
             name: Executar os testes Cypress
             runs-on: ubuntu-latest
-            needs: [update-api, update-front]
             steps:
               - name: Checkout do código
                 uses: actions/checkout@v2
               - name: Executar os testes Cypress
-                run: npx cypress run
+                run: |
+                  npm install cypress –save-dev   
+                  npx cypress run
