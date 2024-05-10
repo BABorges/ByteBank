@@ -31,7 +31,7 @@ jobs:
       - name: Instalar dependências e executar
         run: npm install json-
              npx json-server --watch ./api-bytebank/db.json
-             #npm run start-api
+             npm run start-api
       - name: Subir o Front
         run: npm start
       - name: Executar os testes Cypress
