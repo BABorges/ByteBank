@@ -22,7 +22,7 @@
     "format": "prettier --write \"src/**/*{.js,.jsx}\"",
     "lint": "eslint \"src/**/*{.js,.jsx}\" --quiet",
     "eject": "react-scripts eject",
-    "start-api": "node api-bytebank/server.js"
+    "start-api": "node ./api-bytebank/server.js"
   },
   "jest": {
     "coverageThreshold": {
