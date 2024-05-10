@@ -49,11 +49,12 @@ jobs:
             runs-on: ubuntu-latest
             needs: wait-30-seconds
             steps:
-              - name: Esperar 20 segundos antes de começar
+              - name: Esperar 30 segundos antes de começar
                 run: sleep 30s
               - name: Checkout do código
                 uses: actions/checkout@v2
               - name: Executar os testes Cypress
                 run: |
+                  npm run start-front
                   npm install cypress
                   npx cypress run --headless 
