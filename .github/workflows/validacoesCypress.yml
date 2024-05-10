@@ -22,10 +22,7 @@ jobs:
       - name: Inicializar e atualizar submódulos
         run: git submodule update --init --recursive
       - name: Instalar dependências e executar
-        run: |
-          cd api-bytebank
-          npm install
-          npm run start-api
+        run:  npm run start-api
       #- name: Subir a API
       #  run: npm run start-api
       - name: Subir o Front
