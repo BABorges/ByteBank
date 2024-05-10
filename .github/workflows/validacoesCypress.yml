@@ -19,8 +19,15 @@ jobs:
           node-version: 14.x 
       - name: Instalar as dependências
         run: npm install
-      - name: Subir a API
-        run: npm run start-api
+      - name: Inicializar e atualizar submódulos
+        run: git submodule update --init --recursive
+      - name: Instalar dependências e executar
+        run: |
+          cd api-bytebank
+          npm install
+          npm run start-api
+      #- name: Subir a API
+      #  run: npm run start-api
       - name: Subir o Front
         run: npm start
       - name: Executar os testes Cypress
