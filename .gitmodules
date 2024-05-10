@@ -1,3 +1,3 @@
 [submodule "api-bytebank"]
 	path = api-bytebank
-	url = git@github.com:BABorges/api-ByteBank.git
+	url = https://github.com/BABorges/api-ByteBank.git
