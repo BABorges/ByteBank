@@ -2,27 +2,34 @@
   "transacoes": [
     {
       "transacao": "Depósito",
-      "valor": "150",
-      "data": "18/11/2022",
-      "mes": "Novembro",
+      "valor": "7250.00",
+      "data": "01/04/2024",
+      "mes": "Abril",
       "id": 1
     },
     {
-      "transacao": "Depósito",
-      "valor": "100",
-      "data": "21/11/2022",
-      "mes": "Novembro",
+      "transacao": "Transferência",
+      "valor": "1500.00",
+      "data": "13/04/2024",
+      "mes": "Abril",
       "id": 2
     },
     {
       "transacao": "Depósito",
-      "valor": "102",
-      "data": "22/11/2022",
-      "mes": "Novembro",
+      "valor": "440.56",
+      "data": "09/05/2024",
+      "mes": "Maio",
       "id": 3
+    },
+    {
+      "transacao": "Transferência",
+      "valor": "205.68",
+      "data": "09/05/2024",
+      "mes": "Maio",
+      "id": 4
     }
   ],
   "saldo": {
-    "valor": 2000
+    "valor": 5985
   }
 }

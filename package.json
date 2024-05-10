@@ -20,7 +20,8 @@
     "api": "json-server --watch db.json --port 8080",
     "format": "prettier --write \"src/**/*{.js,.jsx}\"",
     "lint": "eslint \"src/**/*{.js,.jsx}\" --quiet",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start-api": "node server.js"
   },
   "jest": {
     "coverageThreshold": {
