@@ -48,5 +48,5 @@ jobs:
                 uses: actions/checkout@v2
               - name: Executar os testes Cypress
                 run: |
-                  npm install@13.8.1
+                  npm install cypress@13.8.1
                   npx cypress run 
