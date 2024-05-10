@@ -7,7 +7,7 @@ jobs:
   update-api:
     uses: ./.github/workflows/atualizarAPI.yml
   update-front:
-    uses: ./.github/workflows/atualizar Front.yml
+    uses: ./.github/workflows/atualizarFront.yml
   test:
     name: Executar os testes Cypress
     runs-on: ubuntu-latest
