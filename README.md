@@ -12,7 +12,8 @@ Para subir a API do projeto, deve-se abrir um novo terminal:
 
 Na sequência deve-se executar o seguinte comando:
 
-### `./run.bat`
+### `cd api-byteback`
+### `npm run start-api`
 
 Este comando executa a bat que irá acessar a pasta /api-bytebank e executar o comando **npm run start-api**
 
@@ -55,5 +56,3 @@ Neste modo você poderá executar todos os testes existentes executando o seguin
 Ou executar um teste em específico executando o seguinte comando por exemplo:
 
 ### `npx cypress run --spec cypress/e2e/login.cy.js`
-
-# FIM!
